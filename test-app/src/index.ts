@@ -1,4 +1,5 @@
 import {ApplicationConfig, TestAppApplication} from './application';
+import { testNew } from './migrations';
 import { TeamService } from './services';
 import { DataUpdaterService } from './services';
 export * from './application';
@@ -6,8 +7,7 @@ export * from './application';
 export async function main(options: ApplicationConfig = {}) {
   const app = new TestAppApplication(options);
   await app.boot();
-  app.bind('TeamService').to(TeamService);
-  app.bind('DataUpdaterService').to(DataUpdaterService);
+  await testNew(app);
   await app.start();
 
   const url = app.restServer.url;

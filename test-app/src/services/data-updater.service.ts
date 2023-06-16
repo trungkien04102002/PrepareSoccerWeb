@@ -13,7 +13,8 @@ export class DataUpdaterService {
     constructor(
       @inject('TeamService')
       public teamService : TeamService,   
-    ) {}
+    ) {
+    }
     
     public async testFunction() : Promise<void> {
       console.log('ABCD')

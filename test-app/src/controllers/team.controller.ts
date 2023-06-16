@@ -19,6 +19,7 @@ import {
 } from '@loopback/rest';
 import {Team} from '../models';
 import {TeamRepository} from '../repositories';
+import { service } from '@loopback/core';
 
 export class TeamController {
   constructor(
