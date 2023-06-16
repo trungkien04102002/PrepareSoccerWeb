@@ -4,19 +4,21 @@ import * as https from 'https';
 import * as fs from 'fs';  
 import fetch from 'node-fetch';
 
-interface ApiResponse<T> {
-  data: T;
-}
+// interface ApiResponse<T> {
+//   data: T;
+// }
 
 @injectable({scope: BindingScope.TRANSIENT})
 export class DataUpdaterService {
     constructor(
       @inject('TeamService')
-      public teamService : TeamService,
-      
+      public teamService : TeamService,   
     ) {}
     
-    async fetchData(){
+    public async testFunction() : Promise<void> {
+      console.log('ABCD')
+    }
+    public async fetchData() : Promise<void> {
       console.log('Start fetching data......')
       const urls = [
         'http://localhost:5000/api/tourseas',
@@ -28,7 +30,7 @@ export class DataUpdaterService {
         this.fetchAndStore(urls);
       }, 30 * 60 * 1000); 
     }
-    async fetchAndStore(urls: string[]) {
+    public  async fetchAndStore(urls: string[]): Promise<void> {
     
       const date = new Date();
       const folderName = `data-${date.getTime()}`;
